@@ -3,7 +3,7 @@ This is a mysql plugin for python with light and flexible
 
 # use it
 
-from mysql_conn import MySQLConn
+from Mysql_conn import MySQLConn
 
 mysql = MySQLConn()
 
