@@ -3,8 +3,8 @@ from flask import Flask
 
 mysql = MySQL()
 
-class MySQLConn():
-	def __init__(self, host='127.0.0.1', database='notps', user='notps', password='admin'):
+class MySQLConn:
+	def __init__(self, host='localhost', database='xx', user='root', password='xx'):
 		
 		app = Flask(__name__)
 		app.config['MYSQL_DATABASE_USER'] = user
