@@ -4,7 +4,7 @@ from flask import Flask
 mysql = MySQL()
 
 class MySQLConn:
-	def __init__(self, host='localhost', database='xx', user='root', password='xx'):
+	def __init__(self, host='localhost', database='xx', user='root', password=''):
 		
 		app = Flask(__name__)
 		app.config['MYSQL_DATABASE_USER'] = user
@@ -29,7 +29,7 @@ class MySQLConn:
 		if commit is True:
 			conn.commit()
 			self.close(conn, cursor)
-			return cursor.rowcount
+			return cursor.rowcount, cursor.lastrowid
 		else:
 			res = cursor.fetchall()
 			self.close(conn, cursor)
@@ -68,4 +68,4 @@ class MySQLConn:
 			if rollback:
 				conn.commit() 
 			self.close(conn, cursor)
-			return cursor.rowcount
+			return cursor.rowcount, cursor.lastrowid

@@ -15,10 +15,10 @@ mysql = MySQLConn(host=MYSQL_DATABASE_HOST, user=MYSQL_DATABASE_USER, database=M
 
 	# insert
 	the row_id is id of sql insert value
-	result, row_id = mysql.execute('INSERT INTO users (status) value(%s)', (0), True)
+	result, row_id = mysql.execute('INSERT INTO users(status) VALUE(%s)', (0,), True)
 
 	# update
-	result, _ = mysql.execute('UPDATE users set status=0 WHERE uuid=%s', (YOUR_UUID, ), True)
+	result, _ = mysql.execute('UPDATE users SET status=0 WHERE uuid=%s', (YOUR_UUID,), True)
 
 # many
 	# executemany
@@ -27,4 +27,4 @@ mysql = MySQLConn(host=MYSQL_DATABASE_HOST, user=MYSQL_DATABASE_USER, database=M
 	result = mysql.executemany("INSERT INTO users(status, name) VALUES(%s, %s)", _list, True)
 
 	#transcation
-	_res = mysql.transaction([(INSERT INTO users (status) VALUE(%s), (0)), (sql2), (...)])
+	_res, _ = mysql.transaction([(INSERT INTO users(status) VALUE(%s), (0)), (sql2), (...)])
